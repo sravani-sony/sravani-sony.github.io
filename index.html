@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sravani Esampally | Healthcare Data Analyst</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-alt: #020924;
+      --accent: #14b8a6;
+      --accent-soft: rgba(20, 184, 166, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #020c24;
+      --border: #1f2937;
+      --radius-xl: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: radial-gradient(circle at top, #0f172a, #020617 55%);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(2, 6, 23, 0.7));
+      border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .nav-brand {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      margin-left: 1.25rem;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+      gap: 3rem;
+      align-items: center;
+      padding: 3rem 0 4rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.3rem, 4vw, 3.1rem);
+      font-weight: 800;
+      margin: 0 0 0.5rem;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(120deg, #22d3ee, #a855f7);
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 30rem;
+      line-height: 1.6;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 1.5rem 0 2rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .hero-metrics div span:first-child {
+      display: block;
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    @media (max-width: 800px) {
+      .hero-actions {
+        justify-content: center;
+      }
+    }
+
+    .btn-primary, .btn-outline {
+      padding: 0.65rem 1.4rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, #22c55e, #0ea5e9);
+      color: #0b1120;
+      font-weight: 600;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #0f172a, #020617);
+      border-radius: 32px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      padding: 2rem;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.9);
+    }
+
+    .hero-card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .chip {
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border);
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .section {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: linear-gradient(135deg, #020617, #020817);
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      padding: 1.25rem 1.4rem;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      font-size: 1rem;
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px dashed rgba(148, 163, 184, 0.5);
+      color: var(--muted);
+    }
+
+    .contact {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .contact a {
+      color: var(--accent);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 1rem 2rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="nav-brand">Sravani Esampally</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div>
+        <div class="badge">Available for opportunities</div>
+        <h1 class="hero-title">
+          Sravani <span class="hero-gradient">Esampally</span>
+        </h1>
+        <p class="hero-sub">
+          Healthcare Data Analyst crafting data-driven insights with
+          <strong>SQL, Python, EHR/EMR data, and visualization tools</strong> to support better
+          clinical and operational decisions.
+        </p>
+
+        <div class="hero-metrics">
+          <div>
+            <span>3+ Projects</span>
+            <span>Healthcare Analytics & Informatics</span>
+          </div>
+          <div>
+            <span>SQL & Python</span>
+            <span>End-to-end data workflows</span>
+          </div>
+          <div>
+            <span>Power BI & Tableau</span>
+            <span>Interactive dashboards</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#projects" class="btn-primary">View Projects →</a>
+          <a href="#contact" class="btn-outline">Let’s Connect</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <div class="hero-card-title">Healthcare Tech Stack</div>
+        <div class="chip-row">
+          <span class="chip">SQL</span>
+          <span class="chip">Python (Pandas, NumPy)</span>
+          <span class="chip">Power BI</span>
+          <span class="chip">Tableau</span>
+          <span class="chip">Excel (Advanced)</span>
+          <span class="chip">EHR/EMR Data</span>
+          <span class="chip">ICD-10-CM</span>
+          <span class="chip">CPT / HCPCS</span>
+          <span class="chip">Claims Data</span>
+          <span class="chip">ETL & Data Quality</span>
+        </div>
+        <p class="contact">
+          Master’s in <strong>Health Informatics</strong> with hands-on experience in
+          population health analytics, claims modeling, and clinical documentation workflows.
+        </p>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section" id="about">
+      <h2 class="section-title">About</h2>
+      <p class="contact">
+        I am a Junior Healthcare Data Analyst with a background in pharmacy and a Master’s in Health
+        Informatics. I enjoy working at the intersection of clinical workflows, data engineering,
+        and analytics — cleaning messy EHR/EMR and claims data, building clear dashboards, and
+        supporting population health initiatives.
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="section-grid">
+        <div class="card">
+          <h3>Data & Analytics</h3>
+          <p>SQL, Python, data cleaning, feature engineering, and analysis for healthcare datasets.</p>
+          <div class="tag-row">
+            <span class="tag">SQL</span>
+            <span class="tag">Python</span>
+            <span class="tag">Pandas</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Jupyter</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Visualization</h3>
+          <p>Interactive dashboards and visual stories for clinical and operational stakeholders.</p>
+          <div class="tag-row">
+            <span class="tag">Power BI</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">Excel</span>
+            <span class="tag">Charts</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Healthcare Informatics</h3>
+          <p>Experience with claims data, clinical documentation, and healthcare coding systems.</p>
+          <div class="tag-row">
+            <span class="tag">EHR/EMR</span>
+            <span class="tag">ICD-10-CM</span>
+            <span class="tag">CPT</span>
+            <span class="tag">HCPCS</span>
+            <span class="tag">HIPAA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section" id="projects">
+      <h2 class="section-title">Projects</h2>
+      <div class="section-grid">
+        <div class="card">
+          <h3>Population Health Predictive Modeling</h3>
+          <p>
+            Built predictive models using administrative claims data to identify high-risk patients.
+            Included data preprocessing, feature engineering, model evaluation, and SHAP analysis.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Scikit-learn</span>
+            <span class="tag">SHAP</span>
+          </div>
+          <p style="margin-top:0.8rem;">
+            <a href="https://github.com/sravani-sony/population-health-prediction" target="_blank">
+              View on GitHub →
+            </a>
+          </p>
+        </div>
+        <div class="card">
+          <h3>COVID-19 Analytics (In Progress)</h3>
+          <p>
+            Time-series and regression analysis of COVID-19 trends with interactive dashboards
+            to explore infection rates and healthcare impact.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Python</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Tableau</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Healthcare Excel Dashboard</h3>
+          <p>
+            Designed Excel dashboards to track hospital KPIs such as admissions, LOS, readmissions,
+            and resource utilization for leadership teams.
+          </p>
+          <div class="tag-row">
+            <span class="tag">Excel</span>
+            <span class="tag">Pivot Tables</span>
+            <span class="tag">Dashboarding</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <h2 class="section-title">Contact</h2>
+      <p class="contact">
+        I am currently open to opportunities as a <strong>Healthcare Data Analyst</strong> or
+        <strong>Health Informatics Analyst</strong> in the U.S.
+        <br /><br />
+        📧 Email: <a href="mailto:esampallysravani@gmail.com">esampallysravani@gmail.com</a>
+        <br />
+        🔗 LinkedIn:
+        <a href="https://www.linkedin.com/in/sravani-esampally" target="_blank">
+          linkedin.com/in/sravani-esampally
+        </a>
+        <br />
+        🗂 GitHub:
+        <a href="https://github.com/sravani-sony" target="_blank">
+          github.com/sravani-sony
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Sravani Esampally · Built with HTML & CSS · Hosted on GitHub Pages
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
